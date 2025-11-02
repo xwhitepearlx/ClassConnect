@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TutorSessionDetailsActivity">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Session Title"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Code"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date &amp; Time"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textAttendees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attendees:"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerAttendees"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/buttonEditSession"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Session"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/buttonCancelSession"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel Session"
+                android:layout_marginTop="8dp"/>
+
+            <Button
+                android:id="@+id/buttonSendReminders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Reminders"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
