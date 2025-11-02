@@ -11,4 +11,12 @@
         android:text="Use TextView and Put your name here"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="139dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steven"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="172dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
