@@ -70,12 +70,13 @@
         android:padding="12dp"
         android:text="@string/btnSignUp"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/inputPassword"
         app:layout_constraintStart_toStartOf="@+id/inputPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword" />
 
     <TextView
-        android:id="@+id/tvCreateStudent"
+        android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -95,10 +96,10 @@
         android:text="@string/tvNewAccount"
         android:textColor="#FFFEFE"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvCreateStudent"
+        app:layout_constraintEnd_toEndOf="@+id/tvSignUp"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/tvCreateStudent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreateStudent" />
+        app:layout_constraintStart_toStartOf="@+id/tvSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
 
     <TextView
         android:id="@+id/tvDontHaveAcc"

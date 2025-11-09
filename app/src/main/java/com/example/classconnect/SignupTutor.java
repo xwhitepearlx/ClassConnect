@@ -3,6 +3,7 @@ package com.example.classconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,7 +26,14 @@ public class SignupTutor extends AppCompatActivity {
         });
 
         TextView signupNow = findViewById(R.id.tvLogInNow);
+        Button signupButton = findViewById(R.id.btn_SignUpTutor);
 
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupTutor.this, RegistrationTutor.class));
+            }
+        });
         signupNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

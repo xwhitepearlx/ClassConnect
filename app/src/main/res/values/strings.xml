@@ -19,4 +19,16 @@
     <string name="HaveAcc">Already have an account?</string>
     <string name="LogInNow">Login Now</string>
     <string name="tvCreateTutor">Create Tutor Account</string>
+    <string name="tvSignUpHeader">Sign Up</string>
+    <string name="Tutor">Tutor</string>
+    <string name="inputFirstName">First Name</string>
+    <string name="inputLastName">Last Name</string>
+    <string name="Student">Student</string>
+    <string name="inputPhone">Phone</string>
+    <string name="inputEmail">Email</string>
+    <string name="inputProgram">Program</string>
+    <string name="inputAvatar">Picture(URL)</string>
+    <string name="btnRegister">Register</string>
+    <string name="tvBack"><![CDATA[Go Back>>]]></string>
+    <string name="inputInstitution">Institution</string>
 </resources>

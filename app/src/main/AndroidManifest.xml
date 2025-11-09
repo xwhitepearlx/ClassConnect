@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
+            android:name=".RegistrationTutor"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationStudent"
+            android:exported="false" />
+        <activity
             android:name=".SignupTutor"
             android:exported="false" />
         <activity
@@ -46,8 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
