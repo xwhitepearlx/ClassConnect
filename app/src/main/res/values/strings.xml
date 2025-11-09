@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ClassConnect</string>
+    <string name="Username">Username</string>
+    <string name="User_icon">User Icon</string>
+    <string name="Password">Password</string>
+    <string name="btnLogin">Log In</string>
+    <string name="ForgotPassword">Forgot password?</string>
+    <string name="NewAccount">Don\'t have an account?</string>
+    <string name="btnSignUpStudent">Sign Up as a Student</string>
+    <string name="btnSignUpTutor">Sign Up as a Tutor</string>
+    <string name="GretingsLogIn">Welcome,</string>
+    <string name="DontHaveAcc">Don\'t have an account?</string>
+    <string name="tvSignUp">Sign up now</string>
+    <string name="tvGreetings2">Glad to see you!</string>
+    <string name="tvCreateStudent">Create Student Account</string>
+    <string name="tvNewAccount">to get started now!</string>
+    <string name="inpConfirmPassword">Confirm Password</string>
+    <string name="btnSignUp">Sign Up</string>
+    <string name="HaveAcc">Already have an account?</string>
+    <string name="LogInNow">Login Now</string>
+    <string name="tvCreateTutor">Create Tutor Account</string>
 </resources>
