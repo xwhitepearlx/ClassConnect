@@ -19,11 +19,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/loginButton"
+        app:layout_constraintBottom_toTopOf="@id/loginWelcomeButton"
         app:layout_constraintVertical_bias="0.3"/>
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/loginWelcomeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -33,11 +33,11 @@
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/registerWelcomeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Register"
-        app:layout_constraintTop_toBottomOf="@id/loginButton"
+        app:layout_constraintTop_toBottomOf="@id/loginWelcomeButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
