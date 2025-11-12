@@ -25,8 +25,7 @@ public class SignInChoice extends AppCompatActivity {
         });
 
         Button login = findViewById(R.id.btn_LogInActivity);
-        Button signUpStudent = findViewById(R.id.btn_SignUpStudentActivity);
-        Button signUpTutor = findViewById(R.id.btn_SignUpTutorActivity);
+        Button signUp = findViewById(R.id.btn_SignUpActivity);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,18 +34,12 @@ public class SignInChoice extends AppCompatActivity {
             }
         });
 
-        signUpStudent.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignInChoice.this, SignupStudent.class));
             }
         });
 
-        signUpTutor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignInChoice.this, SignupTutor.class));
-            }
-        });
     }
 }

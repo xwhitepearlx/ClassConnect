@@ -6,8 +6,6 @@
     <string name="btnLogin">Log In</string>
     <string name="ForgotPassword">Forgot password?</string>
     <string name="NewAccount">Don\'t have an account?</string>
-    <string name="btnSignUpStudent">Sign Up as a Student</string>
-    <string name="btnSignUpTutor">Sign Up as a Tutor</string>
     <string name="GretingsLogIn">Welcome,</string>
     <string name="DontHaveAcc">Don\'t have an account?</string>
     <string name="tvSignUp"><u>Sign up now</u></string>
