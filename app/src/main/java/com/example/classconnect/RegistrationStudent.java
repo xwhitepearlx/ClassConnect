@@ -26,7 +26,7 @@ public class RegistrationStudent extends AppCompatActivity {
         });
 
         TextView back = findViewById(R.id.tvBack);
-        Button btnStudentRegister = findViewById(R.id.btnRegistration);
+        Button btnStudentRegister = findViewById(R.id.btnRegister);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

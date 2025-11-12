@@ -26,7 +26,7 @@ public class RegistrationTutor extends AppCompatActivity {
         });
 
         TextView back = findViewById(R.id.tvBack);
-        Button btnTutorRegistration = findViewById(R.id.btnRegistration);
+        Button btnTutorRegistration = findViewById(R.id.btnRegister);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

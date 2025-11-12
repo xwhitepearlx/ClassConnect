@@ -3,6 +3,7 @@ package com.example.classconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -26,7 +27,7 @@ public class TutorProfileActivity extends AppCompatActivity {
 
         TextView tvBack = findViewById(R.id.tvBack);
         TextView tvChangePass = findViewById(R.id.tvChangePass);
-
+        Button btnEditProfile = findViewById(R.id.btnEditProfile);
 
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,13 @@ public class TutorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TutorProfileActivity.this, ResetTutorPassword.class));
+            }
+        });
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TutorProfileActivity.this, EditTutorProfile.class));
             }
         });
     }

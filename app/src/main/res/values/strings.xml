@@ -49,5 +49,7 @@
     <string name="inputNewPassword">New Password</string>
     <string name="inputConfirmNewPassword">Confirm New Password</string>
     <string name="btnConfirm">Confirm</string>
+    <string name="tvEditTutorProfile">Edit Your profile</string>
+    <string name="btnConfirmEditProfile">Confirm Edit</string>
 
 </resources>

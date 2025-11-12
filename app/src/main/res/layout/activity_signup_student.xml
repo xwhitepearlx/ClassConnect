@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnterNewPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTutor" />
 
     <EditText
         android:id="@+id/inputNewPassword"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvEnterNewPassword"
+        android:id="@+id/tvTutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
