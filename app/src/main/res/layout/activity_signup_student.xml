@@ -43,39 +43,44 @@
         app:layout_constraintStart_toStartOf="@+id/inputOldPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputOldPassword" />
 
-    <Button
-        android:id="@+id/btn_LogIn"
-        android:layout_width="270dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="#FFFFFF"
+    <EditText
+        android:id="@+id/inputConfirmPassword"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner"
+        android:ems="10"
+        android:hint="@string/inpConfirmPassword"
+        android:inputType="textPassword"
         android:padding="12dp"
-        android:text="@string/btnLogin"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputNewPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputNewPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputNewPassword" />
-
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/ForgotPassword"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputNewPassword"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textColorHint="#FFFEFE"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputNewPassword" />
+
+    <Button
+        android:id="@+id/btn_SignUpStudent"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#FFFFFF"
+        android:padding="12dp"
+        android:text="@string/btnSignUp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/inputNewPassword"
+        app:layout_constraintStart_toStartOf="@+id/inputNewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword" />
 
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="@string/GretingsLogIn"
+        android:text="@string/tvCreateStudent"
         android:textColor="#FDFDFD"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -88,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/tvGreetings2"
+        android:text="@string/tvNewAccount"
         android:textColor="#FFFEFE"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/tvSignUp"
@@ -100,19 +105,20 @@
         android:id="@+id/tvDontHaveAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="200dp"
-        android:text="@string/DontHaveAcc"
+        android:layout_marginStart="80dp"
+        android:text="@string/HaveAcc"
         android:textColor="#040404"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_LogIn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_SignUpStudent"
+        app:layout_constraintVertical_bias="0.746" />
 
     <TextView
         android:id="@+id/tvLogInNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:text="@string/tvSignUp"
+        android:text="@string/LogInNow"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tvDontHaveAcc"
         app:layout_constraintEnd_toEndOf="parent"

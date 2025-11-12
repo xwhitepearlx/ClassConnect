@@ -2,7 +2,9 @@ package com.example.classconnect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,23 +12,34 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class WelcomeActivity extends AppCompatActivity {
-
-    private Button loginBtn, registerBtn;
+public class SignupStudent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_signup_student);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        loginBtn = findViewById(R.id.loginWelcomeButton);
-        registerBtn = findViewById(R.id.registerWelcomeButton);
-        loginBtn.setOnClickListener(v -> startActivity(new Intent(WelcomeActivity.this,LoginActivity.class)));
-        registerBtn.setOnClickListener(v -> startActivity(new Intent(WelcomeActivity.this, RegistrationActivity.class)));
+
+        TextView signupNow = findViewById(R.id.tvLogInNow);
+        Button signupButton = findViewById(R.id.btn_SignUpStudent);
+
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupStudent.this, RegistrationStudent.class));
+            }
+        });
+
+        signupNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupStudent.this, SignInChoice.class));
+            }
+        });
     }
 }
