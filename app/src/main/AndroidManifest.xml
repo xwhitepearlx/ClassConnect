@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
+            android:name=".ResetStudentPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ResetTutorPassword"
+            android:exported="false" />
+        <activity
             android:name=".TemporaryTutorDashBoard"
             android:exported="false" />
         <activity

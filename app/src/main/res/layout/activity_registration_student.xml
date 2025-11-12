@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvNewAccount"
+        android:id="@+id/tvEnterNewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -48,9 +48,9 @@
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
         android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/tvNewAccount"
-        app:layout_constraintStart_toStartOf="@+id/tvNewAccount"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewAccount" />
+        app:layout_constraintEnd_toEndOf="@+id/tvEnterNewPassword"
+        app:layout_constraintStart_toStartOf="@+id/tvEnterNewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnterNewPassword" />
 
     <EditText
         android:id="@+id/inputLastName"

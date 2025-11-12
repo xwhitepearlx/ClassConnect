@@ -25,11 +25,20 @@ public class TutorProfileActivity extends AppCompatActivity {
         });
 
         TextView tvBack = findViewById(R.id.tvBack);
+        TextView tvChangePass = findViewById(R.id.tvChangePass);
+
 
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TutorProfileActivity.this, TemporaryTutorDashBoard.class));
+            }
+        });
+
+        tvChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TutorProfileActivity.this, ResetTutorPassword.class));
             }
         });
     }

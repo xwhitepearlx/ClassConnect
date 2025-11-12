@@ -44,5 +44,10 @@
     <string name="btnEditProfile">Edit Profile</string>
     <string name="TutorID">Tutor ID:</string>
     <string name="Institution">Institution:</string>
+    <string name="ChangePassword">Enter Your New Credentials</string>
+    <string name="inputOldPassword">Current Password</string>
+    <string name="inputNewPassword">New Password</string>
+    <string name="inputConfirmNewPassword">Confirm New Password</string>
+    <string name="btnConfirm">Confirm</string>
 
 </resources>
