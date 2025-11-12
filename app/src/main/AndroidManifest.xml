@@ -12,7 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
-            android:name=".TemporaryDashBoard"
+            android:name=".TemporaryTutorDashBoard"
+            android:exported="false" />
+        <activity
+            android:name=".TutorProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TemporaryStudentDashBoard"
             android:exported="false" />
         <activity
             android:name=".RegistrationTutor"
