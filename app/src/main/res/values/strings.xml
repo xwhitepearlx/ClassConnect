@@ -10,14 +10,14 @@
     <string name="btnSignUpTutor">Sign Up as a Tutor</string>
     <string name="GretingsLogIn">Welcome,</string>
     <string name="DontHaveAcc">Don\'t have an account?</string>
-    <string name="tvSignUp">Sign up now</string>
+    <string name="tvSignUp"><u>Sign up now</u></string>
     <string name="tvGreetings2">Glad to see you!</string>
     <string name="tvCreateStudent">Create Student Account</string>
     <string name="tvNewAccount">to get started now!</string>
     <string name="inpConfirmPassword">Confirm Password</string>
     <string name="btnSignUp">Sign Up</string>
     <string name="HaveAcc">Already have an account?</string>
-    <string name="LogInNow">Login Now</string>
+    <string name="LogInNow"><u>Login Now</u></string>
     <string name="tvCreateTutor">Create Tutor Account</string>
     <string name="tvSignUpHeader">Sign Up</string>
     <string name="Tutor">Tutor</string>
@@ -29,6 +29,27 @@
     <string name="inputProgram">Program</string>
     <string name="inputAvatar">Picture(URL)</string>
     <string name="btnRegister">Register</string>
-    <string name="tvBack"><![CDATA[Go Back>>]]></string>
+    <string name="tvBack"><u><![CDATA[Go Back>>]]></u></string>
     <string name="inputInstitution">Institution</string>
+    <string name="Circles">Circles</string>
+    <string name="ProfilePic">Profile image</string>
+    <string name="StudentID">Student ID:</string>
+    <string name="FirstName">First Name:</string>
+    <string name="LastName">Last Name:</string>
+    <string name="Email">Email:</string>
+    <string name="Phone_prof">Phone:</string>
+    <string name="Program">Program:</string>
+    <string name="Password_profile">Password:</string>
+    <string name="Change_password"><u>Change</u></string>
+    <string name="btnEditProfile">Edit Profile</string>
+    <string name="TutorID">Tutor ID:</string>
+    <string name="Institution">Institution:</string>
+    <string name="ChangePassword">Enter Your New Credentials</string>
+    <string name="inputOldPassword">Current Password</string>
+    <string name="inputNewPassword">New Password</string>
+    <string name="inputConfirmNewPassword">Confirm New Password</string>
+    <string name="btnConfirm">Confirm</string>
+    <string name="tvEditTutorProfile">Edit Your profile</string>
+    <string name="btnConfirmEditProfile">Confirm Edit</string>
+
 </resources>

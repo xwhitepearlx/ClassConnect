@@ -26,7 +26,7 @@ public class SignupTutor extends AppCompatActivity {
         });
 
         TextView signupNow = findViewById(R.id.tvLogInNow);
-        Button signupButton = findViewById(R.id.btn_SignUpTutor);
+        Button signupButton = findViewById(R.id.btnConfirm);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override

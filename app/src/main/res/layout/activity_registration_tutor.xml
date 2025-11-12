@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvNewAccount"
+        android:id="@+id/tvTutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -48,9 +48,9 @@
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
         android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/tvNewAccount"
-        app:layout_constraintStart_toStartOf="@+id/tvNewAccount"
-        app:layout_constraintTop_toBottomOf="@+id/tvNewAccount" />
+        app:layout_constraintEnd_toEndOf="@+id/tvTutor"
+        app:layout_constraintStart_toStartOf="@+id/tvTutor"
+        app:layout_constraintTop_toBottomOf="@+id/tvTutor" />
 
     <EditText
         android:id="@+id/inputLastName"
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputInstitution" />
 
     <Button
-        android:id="@+id/btnRegistration"
+        android:id="@+id/btnRegister"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:layout_marginTop="100dp"
@@ -158,7 +158,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/tvBack"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegistration"
-        app:layout_constraintStart_toStartOf="@+id/btnRegistration"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

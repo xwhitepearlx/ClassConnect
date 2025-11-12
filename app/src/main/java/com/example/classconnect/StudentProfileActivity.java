@@ -12,33 +12,41 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class RegistrationTutor extends AppCompatActivity {
+public class StudentProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_registration_tutor);
+        setContentView(R.layout.activity_student_profile);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        TextView back = findViewById(R.id.tvBack);
-        Button btnTutorRegistration = findViewById(R.id.btnRegister);
+        TextView tvBack = findViewById(R.id.tvBack);
+        TextView tvChangePass = findViewById(R.id.tvChangePass);
+        Button btnEditProfile = findViewById(R.id.btnEditProfile);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationTutor.this, SignupTutor.class));
+                startActivity(new Intent(StudentProfileActivity.this, TemporaryStudentDashBoard.class));
             }
         });
 
-        btnTutorRegistration.setOnClickListener(new View.OnClickListener() {
+        tvChangePass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationTutor.this, TemporaryTutorDashBoard.class));
+                startActivity(new Intent(StudentProfileActivity.this, ResetStudentPassword.class));
+            }
+        });
+
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StudentProfileActivity.this, EditStudentProfile.class));
             }
         });
     }
