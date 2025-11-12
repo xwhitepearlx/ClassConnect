@@ -3,6 +3,7 @@ package com.example.classconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,11 +26,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         TextView loginNow = findViewById(R.id.tvLogInNow);
+        Button btnLogin = findViewById(R.id.btn_LogIn);
 
         loginNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignInChoice.class));
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, TemporaryDashBoard.class));
             }
         });
     }

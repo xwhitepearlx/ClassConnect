@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
+            android:name=".TemporaryDashBoard"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationTutor"
             android:exported="false" />
         <activity
@@ -36,9 +39,6 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileScreenActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudentSessionDetailsActivity"
             android:exported="false" />
         <activity
@@ -46,12 +46,6 @@
             android:exported="false" />
         <activity
             android:name=".CreateSessionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegistrationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WelcomeActivity"
             android:exported="false" />
     </application>
 
