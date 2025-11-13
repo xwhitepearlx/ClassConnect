@@ -9,14 +9,14 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/inputOldPassword"
+        android:id="@+id/emailLoginInput"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
-        android:hint="@string/Username"
-        android:inputType="text"
+        android:hint="@string/inputEmail"
+        android:inputType="text|textEmailAddress"
         android:padding="12dp"
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
@@ -24,10 +24,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTutor" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginHeader2" />
 
     <EditText
-        android:id="@+id/inputNewPassword"
+        android:id="@+id/passwordLoginInput"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -39,12 +39,12 @@
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputOldPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputOldPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputOldPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/emailLoginInput"
+        app:layout_constraintStart_toStartOf="@+id/emailLoginInput"
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginInput" />
 
     <Button
-        android:id="@+id/btn_LogIn"
+        android:id="@+id/loginLoginButton"
         android:layout_width="270dp"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
@@ -53,29 +53,29 @@
         android:text="@string/btnLogin"
         android:textSize="16sp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/inputNewPassword"
-        app:layout_constraintStart_toStartOf="@+id/inputNewPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputNewPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordLoginInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordLoginInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
 
     <TextView
-        android:id="@+id/tvForgotPassword"
+        android:id="@+id/tvForgotPasswordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/ForgotPassword"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputNewPassword"
+        app:layout_constraintEnd_toEndOf="@+id/passwordLoginInput"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputNewPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
 
     <TextView
-        android:id="@+id/tvSignUp"
+        android:id="@+id/tvLoginHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="@string/GretingsLogIn"
+        android:text="@string/GreetingsLogIn"
         android:textColor="#FDFDFD"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -84,17 +84,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTutor"
+        android:id="@+id/tvLoginHeader2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/tvGreetings2"
         android:textColor="#FFFEFE"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/tvLoginHeader"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/tvSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
+        app:layout_constraintStart_toStartOf="@+id/tvLoginHeader"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginHeader" />
 
     <TextView
         android:id="@+id/tvDontHaveAcc"
@@ -105,7 +105,7 @@
         android:text="@string/DontHaveAcc"
         android:textColor="#040404"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_LogIn" />
+        app:layout_constraintTop_toBottomOf="@+id/loginLoginButton" />
 
     <TextView
         android:id="@+id/tvLogInNow"

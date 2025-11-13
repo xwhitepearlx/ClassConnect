@@ -15,37 +15,21 @@
             android:name=".EditStudentProfile"
             android:exported="false" />
         <activity
-            android:name=".EditTutorProfile"
-            android:exported="false" />
-        <activity
             android:name=".ResetStudentPassword"
             android:exported="false" />
         <activity
             android:name=".ResetTutorPassword"
             android:exported="false" />
         <activity
-            android:name=".TemporaryTutorDashBoard"
-            android:exported="false" />
-        <activity
-            android:name=".TutorProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudentProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".TemporaryStudentDashBoard"
+            android:name=".TemporaryDashboard"
+            android:exported="false" />
+        <activity android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationTutor"
-            android:exported="false" />
-        <activity
-            android:name=".RegistrationStudent"
-            android:exported="false" />
-        <activity
-            android:name=".SignupTutor"
-            android:exported="false" />
-        <activity
-            android:name=".SignupStudent"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".SignInChoice"

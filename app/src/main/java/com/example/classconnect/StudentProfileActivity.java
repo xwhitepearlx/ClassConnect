@@ -32,7 +32,7 @@ public class StudentProfileActivity extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StudentProfileActivity.this, TemporaryStudentDashBoard.class));
+                startActivity(new Intent(StudentProfileActivity.this, TemporaryDashboard.class));
             }
         });
 

@@ -26,11 +26,5 @@ public class ResetTutorPassword extends AppCompatActivity {
 
         TextView tvBack = findViewById(R.id.tvBack);
 
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ResetTutorPassword.this, TutorProfileActivity.class));
-            }
-        });
     }
 }

@@ -43,7 +43,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
-        android:hint="@string/inputFirstName"
+        android:hint="@string/inputName"
         android:inputType="text"
         android:padding="12dp"
         android:textColor="@color/white"
@@ -55,27 +55,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStudentID" />
 
     <EditText
-        android:id="@+id/inputLastName"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/inputLastName"
-        android:inputType="text"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="#FFFEFE"
-        android:textSize="18sp"
-        android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/inputFirstName"
-        app:layout_constraintStart_toStartOf="@+id/inputFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/inputFirstName" />
-
-    <EditText
         android:id="@+id/inputPhone"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_corner"
         android:ems="10"
         android:hint="@string/inputPhone"
         android:inputType="phone"
@@ -83,10 +67,9 @@
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/inputLastName"
-        app:layout_constraintStart_toStartOf="@+id/inputLastName"
-        app:layout_constraintTop_toBottomOf="@+id/inputLastName" />
+        app:layout_constraintEnd_toEndOf="@+id/inputFirstName"
+        app:layout_constraintStart_toStartOf="@+id/inputFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/inputFirstName" />
 
     <EditText
         android:id="@+id/InputEmail"

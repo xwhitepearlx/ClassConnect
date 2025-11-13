@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TemporaryStudentDashBoard">
+    tools:context=".TemporaryDashboard">
 
     <Button
         android:id="@+id/button"
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Tutor"
+        android:text="Student"
         app:layout_constraintEnd_toEndOf="@+id/button6"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/button6"

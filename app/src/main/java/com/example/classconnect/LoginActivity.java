@@ -22,7 +22,7 @@ import com.example.classconnect.data.schema.UserTable;
 public class LoginActivity extends AppCompatActivity {
     private EditText emailInput, passwordInput;
     private Button loginButton;
-    private TextView forgotPasswordText;
+    private TextView forgotPasswordText, signUpText;
     private DatabaseHelper dbHelper;
 
     @Override
@@ -42,13 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.emailLoginInput);
         passwordInput = findViewById(R.id.passwordLoginInput);
         loginButton = findViewById(R.id.loginLoginButton);
-        forgotPasswordText = findViewById(R.id.forgotPasswordLoginButton);
+        forgotPasswordText = findViewById(R.id.tvForgotPasswordLogin);
+        signUpText = findViewById(R.id.tvLogInNow);
 
-        // Login button listener
+        // Navigation button
         loginButton.setOnClickListener(v -> handleLogin());
-
-        // (Optional) Forgot password button
         forgotPasswordText.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class)));
+        signUpText.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SignUpActivity.class)));
+
     }
 
     private void handleLogin() {
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkUserCredentials(email, password)) {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            startActivity(new Intent(LoginActivity.this, TemporaryDashboard.class));
             finish();
         } else {
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
