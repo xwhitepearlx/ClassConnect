@@ -19,4 +19,6 @@ public class UserTable {
                     COL_INTEREST + " TEXT, " +              // optional, can be NULL
                     COL_PICTURE + " TEXT" +                 // optional, can be NULL
                     ")";
+
+    //This is my comment Syed Abis
 }
