@@ -21,4 +21,5 @@ public class UserTable {
                     ")";
 
     //This is my comment Syed Abis
+    //This is my comment Syed Abis
 }
