@@ -2,12 +2,9 @@ package com.example.classconnect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.classconnect.databinding.ActivityNotificationBinding;
 
@@ -19,21 +16,23 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityNotificationBinding.inflate(getLayoutInflater());
-        EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+        binding.tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         Intent intent = this.getIntent();
         if (intent != null) {
-            String SessionID = intent.getStringExtra("SessionID");
-            String SessionStartTime = intent.getStringExtra("SessionStartTime");
+            String sessionID = intent.getStringExtra("sessionID");
+            String sessionStartTime = intent.getStringExtra("sessionStartTime");
 
-            binding.SessionID.setText(SessionID);
-            binding.sessionStartTime.setText(SessionStartTime);
+            binding.SessionID.setText(sessionID);
+            binding.sessionStartTime.setText(sessionStartTime);
         }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
     }
 }

@@ -53,7 +53,7 @@ public class NotificationsActivity extends AppCompatActivity implements Navigati
         binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(NotificationsActivity.this, StudentSessionDetailsActivity.class);
+                Intent intent = new Intent(NotificationsActivity.this, NotificationActivity.class);
                 intent.putExtra("sessionID", sessionIDList[position]);
                 intent.putExtra("sessionStartTime", sessionStartTimeList[position]);
                 startActivity(intent);
