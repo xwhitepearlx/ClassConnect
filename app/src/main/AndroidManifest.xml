@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
-            android:name=".NavigationDrawer"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".NotificationsActivity"
             android:exported="false" />
+        <activity
+            android:name=".SessionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NavigationDrawer"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EditStudentProfile"
             android:exported="false" />
