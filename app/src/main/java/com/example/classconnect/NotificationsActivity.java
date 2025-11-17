@@ -3,6 +3,8 @@ package com.example.classconnect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,30 +16,64 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.classconnect.databinding.ActivityNotificationsBinding;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class NotificationsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout drawerLayout;
+    ActivityNotificationsBinding binding;
+    ListAdapter listAdapter;
+    ArrayList<NotificationData> dataArrayList = new ArrayList<>();
+    NotificationData listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityNotificationsBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_notifications);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawer_layout), (v, insets) -> {
+        setContentView(binding.getRoot());
+
+        String[] sessionIDList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] sessionStartTimeList = {"10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30"};
+
+        for (int i = 0; i < sessionIDList.length; i++){
+            listData = new NotificationData(
+                    sessionStartTimeList[i],
+                    sessionIDList[i]
+            );
+            dataArrayList.add(listData);
+        }
+
+        listAdapter = new ListAdapter(NotificationsActivity.this, dataArrayList);
+        binding.listview.setAdapter(listAdapter);
+        binding.listview.setClickable(true);
+        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(NotificationsActivity.this, StudentSessionDetailsActivity.class);
+                intent.putExtra("sessionID", sessionIDList[position]);
+                intent.putExtra("sessionStartTime", sessionStartTimeList[position]);
+                startActivity(intent);
+            }
+        });
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
         // --- Toolbar ---
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Notifications");
 
         // --- Drawer ---
-        drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        drawerLayout = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
