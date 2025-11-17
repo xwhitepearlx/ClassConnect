@@ -2,17 +2,24 @@ package com.example.classconnect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-public class StudentProfileActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class StudentProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,9 @@ public class StudentProfileActivity extends AppCompatActivity {
         TextView tvBack = findViewById(R.id.tvBack);
         TextView tvChangePass = findViewById(R.id.tvChangePass);
         Button btnEditProfile = findViewById(R.id.btnEditProfile);
+
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
