@@ -99,4 +99,5 @@
     <string name="btnSendRemainders">Send Remainders</string>
     <string name="tvCourseName">Course Name:</string>
     <string name="tvShortMessage">You have upcoming session!</string>
+    <string name="tvViewParticipants"><u>View Participants</u></string>
 </resources>

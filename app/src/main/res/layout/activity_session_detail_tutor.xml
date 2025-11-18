@@ -187,12 +187,13 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvParticipants"
+                <ListView
+                    android:id="@+id/lvParticipants"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_marginTop="12dp"
-                    android:nestedScrollingEnabled="false"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="10dp"
                     tools:listitem="@layout/participant_item" />
 
                 <Button
