@@ -88,9 +88,9 @@ public class NotificationsActivity extends AppCompatActivity implements Navigati
         if (id == R.id.nav_notifications) {
             drawerLayout.closeDrawers();
         } else if (id == R.id.nav_sessions) {
-            startActivity(new Intent(this, SessionsActivity.class));
+            startActivity(new Intent(this, CoursesActivity.class));
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, NotificationsActivity.class));
+            startActivity(new Intent(this, StudentProfileActivity.class));
         } else if (id == R.id.nav_sign_out) {
             Toast.makeText(this, "Sign out", Toast.LENGTH_SHORT).show();
         }

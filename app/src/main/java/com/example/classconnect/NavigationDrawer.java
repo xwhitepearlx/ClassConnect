@@ -47,7 +47,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         toggle.syncState();
 
         if (savedInstanceState == null) {
-            Intent intent = new Intent(this, SessionsActivity.class);
+            Intent intent = new Intent(this, CoursesActivity.class);
             startActivity(intent);
         }
     }
@@ -61,7 +61,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
             Intent intent = new Intent(this, StudentProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_sessions) {
-            Intent intent = new Intent(this, SessionsActivity.class);
+            Intent intent = new Intent(this, CoursesActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_notifications) {
             Intent intent = new Intent(this, NotificationsActivity.class);

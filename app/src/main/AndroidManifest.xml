@@ -12,13 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClassConnect">
         <activity
+            android:name=".AddStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ParticipantsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditSessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SessionDetailTutor"
+            android:exported="false" />
+        <activity
+            android:name=".JoinSessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".NotificationsActivity"
             android:exported="false" />
         <activity
-            android:name=".SessionsActivity"
+            android:name=".CoursesActivity"
             android:exported="false" />
         <activity
             android:name=".NavigationDrawer"

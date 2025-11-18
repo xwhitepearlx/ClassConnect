@@ -68,7 +68,7 @@ public class StudentProfileActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             drawerLayout.closeDrawers();
         } else if (id == R.id.nav_sessions) {
-            startActivity(new Intent(this, SessionsActivity.class));
+            startActivity(new Intent(this, CoursesActivity.class));
         } else if (id == R.id.nav_notifications) {
             startActivity(new Intent(this, NotificationsActivity.class));
         } else if (id == R.id.nav_sign_out) {
