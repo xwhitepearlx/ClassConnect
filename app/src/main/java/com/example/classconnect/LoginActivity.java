@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkUserCredentials(email, password)) {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, TemporaryDashboard.class));
+            startActivity(new Intent(LoginActivity.this, SessionDetailTutor.class));
             finish();
         } else {
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();

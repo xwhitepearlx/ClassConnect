@@ -54,7 +54,7 @@ public class StudentProfileActivity extends AppCompatActivity
         TextView tvChangePass = findViewById(R.id.tvChangePass);
         Button btnEditProfile = findViewById(R.id.btnEditProfile);
 
-        tvBack.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, TemporaryDashboard.class)));
+        tvBack.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, CoursesActivity.class)));
 
         tvChangePass.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, ResetStudentPassword.class)));
 
