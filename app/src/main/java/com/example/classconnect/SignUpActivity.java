@@ -81,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
         // Button Navigation
         buttonSelectImage.setOnClickListener(v -> openImagePicker());
         buttonRegister.setOnClickListener(v -> registerUser());
-        buttonLogin.setOnClickListener(v -> startActivity(new Intent(SignUpActivity.this, NavigationDrawer.class)));
+        buttonLogin.setOnClickListener(v -> startActivity(new Intent(SignUpActivity.this, LoginActivity.class)));
     }
 
     private void registerUser() {
