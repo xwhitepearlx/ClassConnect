@@ -101,4 +101,8 @@
     <string name="tvShortMessage">You have upcoming session!</string>
     <string name="tvViewParticipants"><u>View Participants</u></string>
     <string name="tvStudentName">Student Name</string>
+    <string name="menuProfile">Profile</string>
+    <string name="menuCourses">Courses</string>
+    <string name="menuNotifications">Notifications</string>
+    <string name="menuSign_out">Sign out</string>
 </resources>
