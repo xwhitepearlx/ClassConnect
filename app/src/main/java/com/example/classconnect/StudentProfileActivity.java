@@ -1,6 +1,9 @@
 package com.example.classconnect;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +19,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.classconnect.data.DatabaseHelper;
+import com.example.classconnect.data.schema.UserTable;
 import com.google.android.material.navigation.NavigationView;
 
 public class StudentProfileActivity extends AppCompatActivity
@@ -23,6 +28,9 @@ public class StudentProfileActivity extends AppCompatActivity
 
     private DrawerLayout drawerLayout;
 
+    TextView uName1, uName2, uEmail1, uEmail2, uCourse, uPhoneNumber;
+
+    DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +41,17 @@ public class StudentProfileActivity extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        NavigationView navigationView1 = findViewById(R.id.nav_view);
+        View headerView = navigationView1.getHeaderView(0);
+
+        TextView navName = headerView.findViewById(R.id.navUserName);
+        TextView navEmail = headerView.findViewById(R.id.navUserEmail);
+
+        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+
+        navName.setText(sp.getString("logged_name", "User"));
+        navEmail.setText(sp.getString("logged_email", "user@email.com"));
+
 
         // --- Toolbar ---
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -59,7 +78,23 @@ public class StudentProfileActivity extends AppCompatActivity
         tvChangePass.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, ResetStudentPassword.class)));
 
         btnEditProfile.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, EditStudentProfile.class)));
+
+
+        //data shown in the student from table
+        uName1 = findViewById(R.id.uFullName1);
+        uName2 = findViewById(R.id.uName2);
+        uEmail1 = findViewById(R.id.uEmail1);
+        uEmail2 = findViewById(R.id.uEmail2);
+        uCourse = findViewById(R.id.uProgram);
+        uPhoneNumber = findViewById(R.id.uPhoneNo);
+
+        db = new DatabaseHelper(this);
+        SharedPreferences sp1 = getSharedPreferences("UserSession", MODE_PRIVATE);
+        String email = sp1.getString("logged_email", null);
+
+        loadStudentData(email);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -79,6 +114,7 @@ public class StudentProfileActivity extends AppCompatActivity
         return true;
     }
 
+    @SuppressLint("GestureBackNavigation")
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(androidx.core.view.GravityCompat.START)) {
@@ -87,4 +123,39 @@ public class StudentProfileActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+    private void loadStudentData(String email) {
+        Cursor cursor = db.getUserByEmail(email);
+
+        try {
+            if (cursor != null && cursor.moveToFirst()) {
+
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COL_NAME));
+                String emailAddress = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.COL_EMAIL));
+                String course = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.Col_Program));
+                String phone = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.Col_Phone_No));
+
+                uName1.setText(name);
+                uName2.setText(name);
+                uEmail1.setText(emailAddress);
+                uEmail2.setText(emailAddress);
+                uCourse.setText(course);
+                uPhoneNumber.setText(phone);
+
+                SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("logged_name", name);
+                editor.putString("logged_email", emailAddress);
+                editor.apply();
+
+            } else {
+                Toast.makeText(this, "No data found for: " + email, Toast.LENGTH_SHORT).show();
+            }
+        }
+        finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+
 }

@@ -1,68 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context=".CreateCourseActivity">
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tvCreateCourse"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="@string/tvCreateCourse"
-        android:textColor="#FDFDFD"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/inputCourseName"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:hint="@string/inpCourseName"
-        android:inputType="text"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="#FFFEFE"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvCreateCourse"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/tvCreateCourse"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreateCourse" />
+        <!-- Page Title -->
+        <TextView
+            android:id="@+id/tvAddCourseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="20dp"
+            android:text="Add Course"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="270dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/white"
-        android:padding="12dp"
-        android:text="@string/btnCreate"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputCourseName"
-        app:layout_constraintStart_toStartOf="@+id/inputCourseName"
-        app:layout_constraintTop_toBottomOf="@+id/inputCourseName" />
+        <!-- CSIS Code -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="CSIS Code:"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/tvBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/tvBack"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/btnCreate"
-        app:layout_constraintStart_toStartOf="@+id/btnCreate"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreate" />
+        <EditText
+            android:id="@+id/inputCsis"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Enter CSIS Code"
+            android:importantForAutofill="no"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Course Code (Integer only) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Course Code:"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/inputCourseCode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Enter Course Code (Integer)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
+            android:textSize="18sp"
+            tools:ignore="Autofill,HardcodedText,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <!-- Course Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Course Name:"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/inputCourseName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="Enter Course Name"
+            android:importantForAutofill="no"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="30dp">
+
+            <Button
+                android:id="@+id/btnSaveCourse"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="Save"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="Back"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,VisualLintButtonSize,TextContrastCheck" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

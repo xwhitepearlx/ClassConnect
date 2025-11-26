@@ -15,10 +15,44 @@ public class UserRepository {
         dbHelper = new DatabaseHelper(context);
     }
 
+
+    private int countUsersByRole(String role) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT COUNT(*) FROM " + UserTable.TABLE_NAME +
+                        " WHERE " + UserTable.COL_USER_TYPE + " = ?",
+                new String[]{role}
+        );
+
+        int count = 0;
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0); // number of existing users of this type
+        }
+
+        cursor.close();
+//        db.close();
+        return count;
+    }
+
     public long insertUser(String name, String email, String password, String userType, String interest, String pictureUrl) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        int count = countUsersByRole(userType);
+        count++;
+
+        String customID;
+
+        if (userType.equalsIgnoreCase("Student")) {
+            // Student IDs start from S50001
+            customID = "S" + (50000 + count);
+        } else {
+            // Teacher IDs start from T00001
+            customID = String.format("T%05d", count);
+        }
+
         ContentValues values = new ContentValues();
+        values.put(UserTable.COL_CUSTOM_ID, customID);
         values.put(UserTable.COL_NAME, name);
         values.put(UserTable.COL_EMAIL, email);
         values.put(UserTable.COL_PASSWORD, password);

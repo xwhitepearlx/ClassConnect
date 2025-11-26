@@ -1,10 +1,12 @@
 package com.example.classconnect;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -60,6 +62,17 @@ public class NotificationsActivity extends AppCompatActivity implements Navigati
             }
         });
 
+// update the navigation drawer
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView navName = headerView.findViewById(R.id.navUserName);
+        TextView navEmail = headerView.findViewById(R.id.navUserEmail);
+
+        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+
+        navName.setText(sp.getString("logged_name", "User"));
+        navEmail.setText(sp.getString("logged_email", "user@email.com"));
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -73,8 +86,8 @@ public class NotificationsActivity extends AppCompatActivity implements Navigati
 
         // --- Drawer ---
         drawerLayout = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView1 = binding.navView;
+        navigationView1.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
