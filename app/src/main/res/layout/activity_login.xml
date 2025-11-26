@@ -9,7 +9,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/emailLoginInput"
+        android:id="@+id/uCurrentPassword"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvLoginHeader2" />
 
     <EditText
-        android:id="@+id/passwordLoginInput"
+        android:id="@+id/uNewPassword"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
@@ -39,9 +39,9 @@
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/emailLoginInput"
-        app:layout_constraintStart_toStartOf="@+id/emailLoginInput"
-        app:layout_constraintTop_toBottomOf="@+id/emailLoginInput" />
+        app:layout_constraintEnd_toEndOf="@+id/uCurrentPassword"
+        app:layout_constraintStart_toStartOf="@+id/uCurrentPassword"
+        app:layout_constraintTop_toBottomOf="@+id/uCurrentPassword" />
 
     <Button
         android:id="@+id/loginLoginButton"
@@ -53,9 +53,9 @@
         android:text="@string/btnLogin"
         android:textSize="16sp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/passwordLoginInput"
-        app:layout_constraintStart_toStartOf="@+id/passwordLoginInput"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
+        app:layout_constraintEnd_toEndOf="@+id/uNewPassword"
+        app:layout_constraintStart_toStartOf="@+id/uNewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/uNewPassword" />
 
     <TextView
         android:id="@+id/tvForgotPasswordLogin"
@@ -65,10 +65,10 @@
         android:text="@string/ForgotPassword"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/passwordLoginInput"
+        app:layout_constraintEnd_toEndOf="@+id/uNewPassword"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
+        app:layout_constraintTop_toBottomOf="@+id/uNewPassword" />
 
     <TextView
         android:id="@+id/tvLoginHeader"

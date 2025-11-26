@@ -1,9 +1,12 @@
 package com.example.classconnect;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -67,7 +70,19 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
             Intent intent = new Intent(this, NotificationsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_sign_out) {
-            Toast.makeText(this, "Sign out", Toast.LENGTH_SHORT).show();
+            // Clear user session data (if using SharedPreferences)
+            SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear(); // Clear all saved data
+            editor.apply();
+
+            Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+
+            // Navigate to SignInChoice and clear the back stack
+            Intent intent = new Intent(this, SignInChoice.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish(); // Close current activity
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -17,18 +17,18 @@
         android:src="@drawable/icon_account_circle" />
 
     <TextView
+        android:id="@+id/navUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adam Smith"
-        android:textStyle="bold"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/navUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="adamsmith228@gmail.com"
-        android:textSize="14sp"
+        android:layout_marginBottom="12dp"
         android:textColor="@color/white"
-        android:layout_marginBottom="12dp"/>
+        android:textSize="14sp" />
 
 </LinearLayout>
