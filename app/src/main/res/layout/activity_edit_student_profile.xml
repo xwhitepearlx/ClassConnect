@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEditStudentProfile" />
 
     <EditText
-        android:id="@+id/inputFirstName"
+        android:id="@+id/uEditName"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvStudentID" />
 
     <EditText
-        android:id="@+id/inputPhone"
+        android:id="@+id/uEditPhone"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
@@ -67,29 +67,29 @@
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputFirstName"
-        app:layout_constraintStart_toStartOf="@+id/inputFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/inputFirstName" />
+        app:layout_constraintEnd_toEndOf="@+id/uEditName"
+        app:layout_constraintStart_toStartOf="@+id/uEditName"
+        app:layout_constraintTop_toBottomOf="@+id/uEditName" />
 
     <EditText
-        android:id="@+id/InputEmail"
+        android:id="@+id/uEditInterest"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_corner"
         android:ems="10"
-        android:hint="@string/inputEmail"
+        android:hint="@string/inputInterest"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/inputPhone"
-        app:layout_constraintStart_toStartOf="@+id/inputPhone"
-        app:layout_constraintTop_toBottomOf="@+id/inputPhone" />
+        app:layout_constraintEnd_toEndOf="@+id/uEditPhone"
+        app:layout_constraintStart_toStartOf="@+id/uEditPhone"
+        app:layout_constraintTop_toBottomOf="@+id/uEditPhone" />
 
     <EditText
-        android:id="@+id/inputProgram"
+        android:id="@+id/uEditProgram"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
@@ -101,9 +101,9 @@
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
         android:background="@drawable/rounded_corner"
-        app:layout_constraintEnd_toEndOf="@+id/InputEmail"
-        app:layout_constraintStart_toStartOf="@+id/InputEmail"
-        app:layout_constraintTop_toBottomOf="@+id/InputEmail" />
+        app:layout_constraintEnd_toEndOf="@+id/uEditInterest"
+        app:layout_constraintStart_toStartOf="@+id/uEditInterest"
+        app:layout_constraintTop_toBottomOf="@+id/uEditInterest" />
 
     <EditText
         android:id="@+id/inputAvatarURL"
@@ -118,9 +118,9 @@
         android:textColor="@color/white"
         android:textColorHint="#FFFEFE"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputProgram"
-        app:layout_constraintStart_toStartOf="@+id/inputProgram"
-        app:layout_constraintTop_toBottomOf="@+id/inputProgram" />
+        app:layout_constraintEnd_toEndOf="@+id/uEditProgram"
+        app:layout_constraintStart_toStartOf="@+id/uEditProgram"
+        app:layout_constraintTop_toBottomOf="@+id/uEditProgram" />
 
     <Button
         android:id="@+id/btnConfirmEditProfile"

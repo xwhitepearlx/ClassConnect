@@ -10,19 +10,20 @@
 
     <!-- Main content -->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <!-- Toolbar -->
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#45719B"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <TextView
             android:id="@+id/CourseNameText"
@@ -33,7 +34,8 @@
             android:text="Course Name"
             android:textColor="#45719B"
             android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
 
         <LinearLayout
@@ -45,8 +47,8 @@
                 android:id="@+id/CourseIDText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/CourseID"
                 android:textColor="#45719B"
                 android:textSize="16sp"
@@ -56,12 +58,13 @@
                 android:id="@+id/CourseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:text="..."
                 android:textColor="#45719B"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -74,8 +77,8 @@
                 android:id="@+id/CourseCodeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/CourseCode"
                 android:textColor="#45719B"
                 android:textSize="16sp"
@@ -85,56 +88,59 @@
                 android:id="@+id/CourseCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:text="..."
                 android:textColor="#45719B"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/addSession"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="15dp"
-                android:text="@string/addSession"
-                android:textColor="#45719B"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+            android:orientation="vertical"
+            tools:ignore="UselessLeaf" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="380dp"
+            android:layout_height="505dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="100dp"
+            android:layout_weight="1"
             app:cardCornerRadius="20dp"
-            app:cardElevation="8dp">
+            app:cardElevation="8dp"
+            tools:ignore="InefficientWeight">
 
             <ListView
                 android:id="@+id/listView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:listitem="@layout/session_item"
+                android:layout_width="372dp"
+                android:layout_height="444dp"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="10.0sp"/>
+                android:dividerHeight="10.0sp"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/session_item" />
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/addCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Session"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/BackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

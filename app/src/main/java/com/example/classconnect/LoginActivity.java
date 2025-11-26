@@ -1,10 +1,10 @@
 package com.example.classconnect;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         // Find views
-        emailInput = findViewById(R.id.emailLoginInput);
-        passwordInput = findViewById(R.id.passwordLoginInput);
+        emailInput = findViewById(R.id.uCurrentPassword);
+        passwordInput = findViewById(R.id.uNewPassword);
         loginButton = findViewById(R.id.loginLoginButton);
         forgotPasswordText = findViewById(R.id.tvForgotPasswordLogin);
         signUpText = findViewById(R.id.tvLogInNow);
@@ -63,7 +63,16 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkUserCredentials(email, password)) {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, CoursesActivity.class));
+            Intent intent = new Intent(LoginActivity.this, CoursesActivity.class);
+            startActivity(intent);
+            String role = dbHelper.getUserRole(email);
+
+            // 🔥 Save email + role in SharedPreferences
+            SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("logged_email", email);
+            editor.putString("logged_role", role);
+            editor.apply();
             finish();
         } else {
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
