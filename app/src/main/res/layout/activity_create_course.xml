@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
+    android:background="@drawable/login_background"
     android:padding="20dp">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:paddingBottom="20dp"
             android:text="Add Course"
-            android:textColor="#333333"
+            android:textColor="@color/white"
             android:textSize="28sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="CSIS Code:"
-            android:textColor="#444444"
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
@@ -39,10 +39,12 @@
             android:id="@+id/inputCsis"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_corner"
             android:hint="Enter CSIS Code"
             android:importantForAutofill="no"
             android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
             android:textSize="18sp"
             tools:ignore="HardcodedText,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
 
@@ -52,7 +54,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:text="Course Code:"
-            android:textColor="#444444"
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
@@ -60,10 +62,12 @@
             android:id="@+id/inputCourseCode"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_corner"
             android:hint="Enter Course Code (Integer)"
             android:inputType="number"
             android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
             android:textSize="18sp"
             tools:ignore="Autofill,HardcodedText,TextContrastCheck,VisualLintTextFieldSize" />
 
@@ -73,7 +77,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:text="Course Name:"
-            android:textColor="#444444"
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
@@ -81,10 +85,12 @@
             android:id="@+id/inputCourseName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:drawable/edit_text"
+            android:background="@drawable/rounded_corner"
             android:hint="Enter Course Name"
             android:importantForAutofill="no"
             android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFEFE"
             android:textSize="18sp"
             tools:ignore="HardcodedText,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
 
@@ -101,9 +107,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:backgroundTint="#4CAF50"
+                android:backgroundTint="@color/white"
                 android:text="Save"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
 
@@ -116,11 +122,11 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:backgroundTint="#D32F2F"
+                android:backgroundTint="@color/white"
                 android:text="Back"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="18sp"
-                tools:ignore="HardcodedText,VisualLintButtonSize" />
+                tools:ignore="HardcodedText,VisualLintButtonSize,TextContrastCheck" />
         </LinearLayout>
 
     </LinearLayout>
