@@ -68,14 +68,18 @@ public class LoginActivity extends AppCompatActivity {
             String userName = userData[0];
             String userEmail = userData[1];
             String userRole = userData[2];
+            String pictureUrl = userData[3];
 
             // Save ALL user data to SharedPreferences
             SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
-            editor.putString("logged_name", userName);    // ← FIXED: Now saving name!
+            editor.putString("logged_name", userName);
             editor.putString("logged_email", userEmail);
             editor.putString("logged_role", userRole);
-            editor.commit(); // Use commit() for immediate save
+            if (pictureUrl != null) {
+                editor.putString("logged_picture_url", pictureUrl);
+            }
+            editor.apply();
 
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
 
@@ -92,7 +96,8 @@ public class LoginActivity extends AppCompatActivity {
 
         String query = "SELECT " + UserTable.COL_NAME + ", " +
                 UserTable.COL_EMAIL + ", " +
-                UserTable.COL_USER_TYPE +
+                UserTable.COL_USER_TYPE + ", " +
+                UserTable.COL_PICTURE +
                 " FROM " + UserTable.TABLE_NAME +
                 " WHERE " + UserTable.COL_EMAIL + "=? AND " +
                 UserTable.COL_PASSWORD + "=?";
@@ -102,10 +107,11 @@ public class LoginActivity extends AppCompatActivity {
         String[] userData = null;
 
         if (cursor.moveToFirst()) {
-            userData = new String[3];
+            userData = new String[4];
             userData[0] = cursor.getString(0); // Name
             userData[1] = cursor.getString(1); // Email
             userData[2] = cursor.getString(2); // UserType (Role)
+            userData[3] = cursor.getString(3); // Picture URL (can be null)
         }
 
         cursor.close();

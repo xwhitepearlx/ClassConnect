@@ -163,6 +163,7 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
         SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
         String savedName = sp.getString("logged_name", "User Name");
         String savedEmail = sp.getString("logged_email", "user@email.com");
+        String pictureUrl = sp.getString("logged_picture_url", null);
 
         // Load header view
         android.view.View headerView = navigationView.getHeaderView(0);
@@ -170,6 +171,7 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
         // Find header textviews
         android.widget.TextView navName = headerView.findViewById(R.id.navUserName);
         android.widget.TextView navEmail = headerView.findViewById(R.id.navUserEmail);
+        android.widget.ImageView navImage = headerView.findViewById(R.id.nav_header_profile_image);
 
         // Set data
         if (navName != null) {
@@ -177,6 +179,12 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
         }
         if (navEmail != null) {
             navEmail.setText(savedEmail);
+        }
+        if (pictureUrl != null && navImage != null) {
+            android.net.Uri imageUri = android.net.Uri.parse(pictureUrl);
+            navImage.setImageURI(imageUri);
+        } else if (navImage != null) {
+            navImage.setImageResource(R.drawable.icon_account_circle); // Make sure you have this drawable
         }
     }
 }

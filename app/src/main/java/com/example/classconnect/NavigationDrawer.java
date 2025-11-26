@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -40,6 +42,18 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        ImageView navProfileImage = headerView.findViewById(R.id.nav_header_profile_image);
+        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+
+        String pictureUrl = sp.getString("logged_picture_url", null);
+
+        if (pictureUrl != null && !pictureUrl.isEmpty()) {
+            android.net.Uri imageUri = android.net.Uri.parse(pictureUrl);
+            navProfileImage.setImageURI(imageUri);
+        } else {
+            navProfileImage.setImageResource(R.drawable.icon_account_circle);
+        }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);

@@ -67,21 +67,31 @@ public class SignUpActivity extends AppCompatActivity {
         // Initialize repository
         userRepo = new UserRepository(this);
 
-        // Initialize image picker launcher
-        pickImageLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        imageUri = result.getData().getData();
-                        imagePreview.setImageURI(imageUri);
-                    }
-                }
-        );
-
         // Button Navigation
         buttonSelectImage.setOnClickListener(v -> openImagePicker());
         buttonRegister.setOnClickListener(v -> registerUser());
         buttonLogin.setOnClickListener(v -> startActivity(new Intent(SignUpActivity.this, NavigationDrawer.class)));
+
+        // Initialize image picker launcher
+        pickImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null && result.getData().getData() != null) {
+                        // This is the URI of the selected image
+                        imageUri = result.getData().getData();
+
+                        final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION;
+                        try {
+                            getContentResolver().takePersistableUriPermission(imageUri, takeFlags);
+                        } catch (SecurityException e) {
+                            android.util.Log.e("SignUpActivity", "Failed to take persistable permission", e);
+                        }
+
+                        // Update your image preview
+                        imagePreview.setImageURI(imageUri);
+                    }
+                }
+        );
     }
 
     private void registerUser() {
@@ -157,18 +167,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
+
         pickImageLauncher.launch(intent);
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            imageUri = data.getData();
-            imagePreview.setImageURI(imageUri);
-        }
-    }
-
 }
