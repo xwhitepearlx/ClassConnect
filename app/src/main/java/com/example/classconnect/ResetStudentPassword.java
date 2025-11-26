@@ -86,7 +86,7 @@ public class ResetStudentPassword extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ResetStudentPassword.this, StudentProfileActivity.class));
+                startActivity(new Intent(ResetStudentPassword.this, ProfileActivity.class));
             }
         });
     }

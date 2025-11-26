@@ -80,7 +80,7 @@
             android:name=".ResetTutorPassword"
             android:exported="false" />
         <activity
-            android:name=".StudentProfileActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".TemporaryDashboard"

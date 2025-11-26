@@ -36,7 +36,7 @@ public class EditStudentProfile extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EditStudentProfile.this, StudentProfileActivity.class));
+                startActivity(new Intent(EditStudentProfile.this, ProfileActivity.class));
             }
         });
         Button btnConfirmEdit = findViewById(R.id.btnConfirmEditProfile);

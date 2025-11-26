@@ -142,7 +142,7 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
             drawerLayout.closeDrawers();
 
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, StudentProfileActivity.class));
+            startActivity(new Intent(this, ProfileActivity.class));
 
         } else if (id == R.id.nav_notifications) {
             startActivity(new Intent(this, NotificationsActivity.class));

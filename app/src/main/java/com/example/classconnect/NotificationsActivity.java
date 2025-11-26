@@ -103,7 +103,7 @@ public class NotificationsActivity extends AppCompatActivity implements Navigati
         } else if (id == R.id.nav_sessions) {
             startActivity(new Intent(this, CoursesActivity.class));
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, StudentProfileActivity.class));
+            startActivity(new Intent(this, ProfileActivity.class));
         } else if (id == R.id.nav_sign_out) {
             Toast.makeText(this, "Sign out", Toast.LENGTH_SHORT).show();
         }

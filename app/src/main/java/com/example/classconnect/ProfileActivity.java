@@ -23,7 +23,7 @@ import com.example.classconnect.data.DatabaseHelper;
 import com.example.classconnect.data.schema.UserTable;
 import com.google.android.material.navigation.NavigationView;
 
-public class StudentProfileActivity extends AppCompatActivity
+public class ProfileActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
@@ -34,7 +34,7 @@ public class StudentProfileActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_profile);
+        setContentView(R.layout.activity_profile);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawer_layout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -73,11 +73,11 @@ public class StudentProfileActivity extends AppCompatActivity
         TextView tvChangePass = findViewById(R.id.tvChangePass);
         Button btnEditProfile = findViewById(R.id.btnEditProfile);
 
-        tvBack.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, CoursesActivity.class)));
+        tvBack.setOnClickListener(v -> startActivity(new Intent(ProfileActivity.this, CoursesActivity.class)));
 
-        tvChangePass.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, ResetStudentPassword.class)));
+        tvChangePass.setOnClickListener(v -> startActivity(new Intent(ProfileActivity.this, ResetStudentPassword.class)));
 
-        btnEditProfile.setOnClickListener(v -> startActivity(new Intent(StudentProfileActivity.this, EditStudentProfile.class)));
+        btnEditProfile.setOnClickListener(v -> startActivity(new Intent(ProfileActivity.this, EditStudentProfile.class)));
 
 
         //data shown in the student from table

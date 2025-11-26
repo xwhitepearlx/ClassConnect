@@ -3,10 +3,7 @@ package com.example.classconnect;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -60,8 +57,8 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Launch StudentProfileActivity instead of a fragment
-            Intent intent = new Intent(this, StudentProfileActivity.class);
+            // Launch ProfileActivity instead of a fragment
+            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_sessions) {
             Intent intent = new Intent(this, CoursesActivity.class);
