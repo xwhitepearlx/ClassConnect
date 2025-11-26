@@ -146,7 +146,7 @@
             tools:ignore="HardcodedText"
             android:layout_width="370dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:backgroundTint="#45719B"
             android:padding="12dp"
