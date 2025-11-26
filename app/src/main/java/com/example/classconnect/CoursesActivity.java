@@ -100,7 +100,7 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
         // --- Toolbar ---
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Sessions");
+        getSupportActionBar().setTitle("Courses");
 
 
         // --- Drawer ---

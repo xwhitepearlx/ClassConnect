@@ -111,7 +111,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp"
@@ -120,7 +120,7 @@
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="372dp"
-                android:layout_height="444dp"
+                android:layout_height="match_parent"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10.0sp"
                 android:scrollbars="vertical"
@@ -130,17 +130,27 @@
 
         <Button
             android:id="@+id/addCourse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Add Session"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:layout_width="370dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#45719B"
+            android:padding="12dp"
+            android:textSize="16dp"/>
 
         <Button
             android:id="@+id/BackButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Back"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:layout_width="370dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#45719B"
+            android:padding="12dp"
+            android:textSize="16dp"/>
 
     </LinearLayout>
 

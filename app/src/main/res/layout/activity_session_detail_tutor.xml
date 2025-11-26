@@ -204,9 +204,9 @@
                     android:layout_gravity="center"
                     android:backgroundTint="#45719B"
                     android:padding="12dp"
-                    android:text="@string/btnEditSession"
                     android:textColor="@color/white"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:text="@string/btnEditSession"/>
 
                 <Button
                     android:id="@+id/btnCancelSession"
