@@ -61,34 +61,56 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if (checkUserCredentials(email, password)) {
-            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(LoginActivity.this, CoursesActivity.class);
-            startActivity(intent);
-            String role = dbHelper.getUserRole(email);
+        // Get user data including name
+        String[] userData = checkUserCredentials(email, password);
 
-            // 🔥 Save email + role in SharedPreferences
+        if (userData != null) {
+            String userName = userData[0];
+            String userEmail = userData[1];
+            String userRole = userData[2];
+
+            // Save ALL user data to SharedPreferences
             SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
-            editor.putString("logged_email", email);
-            editor.putString("logged_role", role);
-            editor.apply();
+            editor.putString("logged_name", userName);    // ← FIXED: Now saving name!
+            editor.putString("logged_email", userEmail);
+            editor.putString("logged_role", userRole);
+            editor.commit(); // Use commit() for immediate save
+
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(LoginActivity.this, CoursesActivity.class);
+            startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private boolean checkUserCredentials(String email, String password) {
+    private String[] checkUserCredentials(String email, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        //Log.d("LOGIN_TEST", "Trying login with email: '" + email + "', password: '" + password + "'");
-        String query = "SELECT * FROM " + UserTable.TABLE_NAME +
-                " WHERE " + UserTable.COL_EMAIL + "=? AND " + UserTable.COL_PASSWORD + "=?";
+
+        String query = "SELECT " + UserTable.COL_NAME + ", " +
+                UserTable.COL_EMAIL + ", " +
+                UserTable.COL_USER_TYPE +
+                " FROM " + UserTable.TABLE_NAME +
+                " WHERE " + UserTable.COL_EMAIL + "=? AND " +
+                UserTable.COL_PASSWORD + "=?";
+
         Cursor cursor = db.rawQuery(query, new String[]{email, password});
-        boolean valid = cursor.moveToFirst();
-        //Log.d("LOGIN_TEST", "Cursor count: " + cursor.getCount());
+
+        String[] userData = null;
+
+        if (cursor.moveToFirst()) {
+            userData = new String[3];
+            userData[0] = cursor.getString(0); // Name
+            userData[1] = cursor.getString(1); // Email
+            userData[2] = cursor.getString(2); // UserType (Role)
+        }
+
         cursor.close();
         db.close();
-        return valid;
+
+        return userData;
     }
 }

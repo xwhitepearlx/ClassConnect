@@ -57,33 +57,42 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Launch ProfileActivity instead of a fragment
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_sessions) {
             Intent intent = new Intent(this, CoursesActivity.class);
             startActivity(intent);
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_notifications) {
             Intent intent = new Intent(this, NotificationsActivity.class);
             startActivity(intent);
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_sign_out) {
-            // Clear user session data (if using SharedPreferences)
-            SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.clear(); // Clear all saved data
-            editor.apply();
-
-            Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
-
-            // Navigate to SignInChoice and clear the back stack
-            Intent intent = new Intent(this, SignInChoice.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish(); // Close current activity
+            performSignOut();
+            return true;
         }
 
-        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void performSignOut() {
+        // Clear SharedPreferences
+        SharedPreferences userSession = getSharedPreferences("UserSession", MODE_PRIVATE);
+        userSession.edit().clear().commit();
+
+        SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        userPrefs.edit().clear().commit();
+
+        Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+
+        // Navigate directly to LoginActivity (not SignInChoice)
+        Intent intent = new Intent(NavigationDrawer.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        // Finish all activities
+        finishAffinity();
     }
 
     @Override
