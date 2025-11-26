@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import com.example.classconnect.NotificationData;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -18,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 8;
+    public static final int DATABASE_VERSION = 9;
     private static final String DATABASE_NAME = "ClassConnect.db";
     private static final String TAG = "DatabaseHelper";
     CourseData cd = new CourseData();
@@ -40,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(UserTable.CREATE_SESSION_TABLE);
         db.execSQL(UserTable.CREATE_STUDENT_COURSE_TABLE);
         db.execSQL(UserTable.CREATE_STUDENT_SESSION_TABLE);
-
+        db.execSQL(UserTable.CREATE_NOTIFICATIONS_TABLE);
         cd.insertDefaultCourses(db);
     }
 
@@ -51,6 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + UserTable.SESSION_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + UserTable.COURSES_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + UserTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + UserTable.NOTIFICATIONS_TABLE);
         onCreate(db);
     }
 
@@ -383,5 +388,107 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(UserTable.COL_COURSE_NAME, name);
         long result = db.insert(UserTable.COURSES_TABLE, null, values);
         return result != -1;
+    }
+    // ========== NOTIFICATION METHODS ==========
+
+    public boolean insertNotification(String studentEmail, int sessionId, String type, String message) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(UserTable.NOTIF_STUDENT_EMAIL, studentEmail);
+        cv.put(UserTable.NOTIF_SESSION_ID, sessionId);
+        cv.put(UserTable.NOTIF_TYPE, type);
+        cv.put(UserTable.NOTIF_MESSAGE, message);
+        cv.put(UserTable.NOTIF_TIME, new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss",
+                java.util.Locale.getDefault()).format(new java.util.Date()));
+        cv.put(UserTable.NOTIF_READ, 0);
+
+        long result = db.insert(UserTable.NOTIFICATIONS_TABLE, null, cv);
+        return result != -1;
+    }
+
+    public void notifySessionParticipants(int sessionId, String type, String message) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT " + UserTable.SS_EMAIL + " FROM " + UserTable.STUDENT_SESSION_TABLE +
+                " WHERE " + UserTable.SS_SESSION_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(sessionId)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                String email = cursor.getString(0);
+                insertNotification(email, sessionId, type, message);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+    }
+    public List<NotificationData> getNotificationsForStudent(String studentEmail) {
+        List<NotificationData> notifications = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT n.*, s." + UserTable.SESSION_DATE + ", s." + UserTable.SESSION_START_TIME +
+                " FROM " + UserTable.NOTIFICATIONS_TABLE + " n " +
+                "LEFT JOIN " + UserTable.SESSION_TABLE + " s " +
+                "ON n." + UserTable.NOTIF_SESSION_ID + " = s." + UserTable.SESSION_ID +
+                " WHERE n." + UserTable.NOTIF_STUDENT_EMAIL + " = ? " +
+                "ORDER BY n." + UserTable.NOTIF_TIME + " DESC";
+
+        Cursor cursor = db.rawQuery(query, new String[]{studentEmail});
+
+        if (cursor.moveToFirst()) {
+            do {
+                int sessionId = cursor.getInt(cursor.getColumnIndexOrThrow(UserTable.NOTIF_SESSION_ID));
+                int dateIdx = cursor.getColumnIndex(UserTable.SESSION_DATE);
+                int timeIdx = cursor.getColumnIndex(UserTable.SESSION_START_TIME);
+
+                String date = (dateIdx != -1 && !cursor.isNull(dateIdx)) ? cursor.getString(dateIdx) : "N/A";
+                String time = (timeIdx != -1 && !cursor.isNull(timeIdx)) ? cursor.getString(timeIdx) : "N/A";
+                String message = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.NOTIF_MESSAGE));
+                String timestamp = cursor.getString(cursor.getColumnIndexOrThrow(UserTable.NOTIF_TIME));
+
+                String scheduleTime = date + " at " + time;
+                notifications.add(new NotificationData(String.valueOf(sessionId), scheduleTime, message, timestamp));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return notifications;
+    }
+
+    // UPDATE SESSION METHOD
+    public boolean updateSession(int sessionId, String date, String time, int duration,
+                                 String location, int maxParticipant, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(UserTable.SESSION_DATE, date);
+        cv.put(UserTable.SESSION_START_TIME, time);
+        cv.put(UserTable.SESSION_DURATION, duration);
+        cv.put(UserTable.SESSION_LOCATION, location);
+        cv.put(UserTable.SESSION_MAX_PART, maxParticipant);
+        cv.put(UserTable.SESSION_DESCRIPTION, description);
+
+        int result = db.update(UserTable.SESSION_TABLE, cv,
+                UserTable.SESSION_ID + " = ?",
+                new String[]{String.valueOf(sessionId)});
+
+        Log.d(TAG, "Update session result: " + result);
+        return result > 0;
+    }
+    public boolean resetPassword(String email, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(UserTable.COL_PASSWORD, newPassword);
+
+        int result = db.update(
+                UserTable.TABLE_NAME,
+                cv,
+                UserTable.COL_EMAIL + " = ?",
+                new String[]{email}
+        );
+
+        Log.d(TAG, "Reset password for " + email + ": " + (result > 0 ? "SUCCESS" : "FAILED"));
+
+        return result > 0;
     }
 }

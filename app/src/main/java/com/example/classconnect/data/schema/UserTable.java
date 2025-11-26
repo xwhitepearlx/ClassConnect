@@ -107,5 +107,28 @@ public class UserTable {
                     "FOREIGN KEY(" + SS_EMAIL + ") REFERENCES " + TABLE_NAME + "(" + COL_EMAIL + ") ON DELETE CASCADE, " +
                     "FOREIGN KEY(" + SS_SESSION_ID + ") REFERENCES " + SESSION_TABLE + "(" + SESSION_ID + ") ON DELETE CASCADE" +
                     ");";
+//Table 6 - NOTIFICATIONS
 
+    public static final String NOTIFICATIONS_TABLE = "Notifications";
+
+    public static final String NOTIF_ID = "id";
+    public static final String NOTIF_STUDENT_EMAIL = "student_email";
+    public static final String NOTIF_SESSION_ID = "session_id";
+    public static final String NOTIF_TYPE = "notification_type";
+    public static final String NOTIF_MESSAGE = "message";
+    public static final String NOTIF_TIME = "timestamp";
+    public static final String NOTIF_READ = "is_read";
+
+    public static final String CREATE_NOTIFICATIONS_TABLE =
+            "CREATE TABLE " + NOTIFICATIONS_TABLE + " (" +
+                    NOTIF_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    NOTIF_STUDENT_EMAIL + " TEXT NOT NULL, " +
+                    NOTIF_SESSION_ID + " INTEGER NOT NULL, " +
+                    NOTIF_TYPE + " TEXT NOT NULL, " +
+                    NOTIF_MESSAGE + " TEXT NOT NULL, " +
+                    NOTIF_TIME + " TEXT NOT NULL, " +
+                    NOTIF_READ + " INTEGER DEFAULT 0, " +
+                    "FOREIGN KEY(" + NOTIF_STUDENT_EMAIL + ") REFERENCES " + TABLE_NAME + "(" + COL_EMAIL + "), " +
+                    "FOREIGN KEY(" + NOTIF_SESSION_ID + ") REFERENCES " + SESSION_TABLE + "(" + SESSION_ID + ")" +
+                    ");";
 }

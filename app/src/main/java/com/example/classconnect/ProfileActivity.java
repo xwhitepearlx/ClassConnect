@@ -41,17 +41,6 @@ public class ProfileActivity extends AppCompatActivity
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        NavigationView navigationView1 = findViewById(R.id.nav_view);
-        View headerView = navigationView1.getHeaderView(0);
-
-        TextView navName = headerView.findViewById(R.id.navUserName);
-        TextView navEmail = headerView.findViewById(R.id.navUserEmail);
-
-        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
-
-        navName.setText(sp.getString("logged_name", "User"));
-        navEmail.setText(sp.getString("logged_email", "user@email.com"));
-
 
         // --- Toolbar ---
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -67,6 +56,9 @@ public class ProfileActivity extends AppCompatActivity
                 this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        // Update navigation header with logged-in user's info
+        updateNavigationHeader(navigationView);
 
         // --- Profile buttons ---
         TextView tvBack = findViewById(R.id.tvBack);
@@ -107,7 +99,18 @@ public class ProfileActivity extends AppCompatActivity
         } else if (id == R.id.nav_notifications) {
             startActivity(new Intent(this, NotificationsActivity.class));
         } else if (id == R.id.nav_sign_out) {
-            Toast.makeText(this, "Sign out", Toast.LENGTH_SHORT).show();
+            // FIXED: Proper sign-out implementation
+            SharedPreferences preferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.apply();
+
+            Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
 
         drawerLayout.closeDrawers();
@@ -123,6 +126,25 @@ public class ProfileActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+    private void updateNavigationHeader(NavigationView navigationView) {
+        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+        String savedName = sp.getString("logged_name", "User");
+        String savedEmail = sp.getString("logged_email", "user@email.com");
+
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView navName = headerView.findViewById(R.id.navUserName);
+        TextView navEmail = headerView.findViewById(R.id.navUserEmail);
+
+        if (navName != null) {
+            navName.setText(savedName);
+        }
+        if (navEmail != null) {
+            navEmail.setText(savedEmail);
+        }
+    }
+
     private void loadStudentData(String email) {
         Cursor cursor = db.getUserByEmail(email);
 

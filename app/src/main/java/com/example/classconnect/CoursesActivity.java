@@ -108,30 +108,14 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        // ADDED CODE START — UPDATE NAV HEADER
-        SharedPreferences spNav = getSharedPreferences("UserSession", MODE_PRIVATE);
-        String savedName = spNav.getString("logged_name", "User Name");
-        String savedEmail = spNav.getString("logged_email", "user@email.com");
-
-        // Load header view
-        android.view.View headerView = navigationView.getHeaderView(0);
-
-        // Find header textviews
-        android.widget.TextView navName = headerView.findViewById(R.id.navUserName);
-        android.widget.TextView navEmail = headerView.findViewById(R.id.navUserEmail);
-
-        // Set data
-        navName.setText(savedName);
-        navEmail.setText(savedEmail);
-
-
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        // UPDATE NAV HEADER with logged-in user's info
+        updateNavigationHeader(navigationView);
     }
 
     @Override
@@ -148,7 +132,18 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
             startActivity(new Intent(this, NotificationsActivity.class));
 
         } else if (id == R.id.nav_sign_out) {
-            Toast.makeText(this, "Sign out", Toast.LENGTH_SHORT).show();
+            // FIXED: Proper sign-out implementation
+            SharedPreferences preferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.apply();
+
+            Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
 
         drawerLayout.closeDrawers();
@@ -161,6 +156,27 @@ public class CoursesActivity extends AppCompatActivity implements NavigationView
             drawerLayout.closeDrawers();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private void updateNavigationHeader(NavigationView navigationView) {
+        SharedPreferences sp = getSharedPreferences("UserSession", MODE_PRIVATE);
+        String savedName = sp.getString("logged_name", "User Name");
+        String savedEmail = sp.getString("logged_email", "user@email.com");
+
+        // Load header view
+        android.view.View headerView = navigationView.getHeaderView(0);
+
+        // Find header textviews
+        android.widget.TextView navName = headerView.findViewById(R.id.navUserName);
+        android.widget.TextView navEmail = headerView.findViewById(R.id.navUserEmail);
+
+        // Set data
+        if (navName != null) {
+            navName.setText(savedName);
+        }
+        if (navEmail != null) {
+            navEmail.setText(savedEmail);
         }
     }
 }

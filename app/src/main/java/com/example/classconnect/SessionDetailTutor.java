@@ -21,9 +21,9 @@ import java.util.List;
 
 public class SessionDetailTutor extends AppCompatActivity {
 
+    private DatabaseHelper db;
     private int sessionId;
     private int courseId;
-    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class SessionDetailTutor extends AppCompatActivity {
             editIntent.putExtra("location", location);
             editIntent.putExtra("max_participant", maxParticipant);
             editIntent.putExtra("description", description);
-            startActivity(editIntent);
+            startActivityForResult(editIntent, 100);
         });
 
         btnCancelSession.setOnClickListener(v -> {
@@ -92,10 +92,18 @@ public class SessionDetailTutor extends AppCompatActivity {
                     .setTitle("Cancel Session")
                     .setMessage("Are you sure you want to cancel this session? This cannot be undone.")
                     .setPositiveButton("Yes, Cancel", (dialog, which) -> {
+                        // Send notification to all participants before deleting
+                        String notificationMessage = "Session #" + sessionId +
+                                " scheduled for " + date + " at " + time +
+                                " has been cancelled by the tutor.";
+
+                        db.notifySessionParticipants(sessionId, "SESSION_CANCELLED", notificationMessage);
+
+                        // Now delete the session
                         boolean deleted = db.deleteSession(sessionId);
                         if (deleted) {
                             Toast.makeText(SessionDetailTutor.this,
-                                    "Session cancelled successfully", Toast.LENGTH_SHORT).show();
+                                    "Session cancelled and participants notified", Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
                             Toast.makeText(SessionDetailTutor.this,
@@ -107,11 +115,37 @@ public class SessionDetailTutor extends AppCompatActivity {
         });
 
         btnSendReminders.setOnClickListener(v -> {
+            int count = db.getSessionParticipantCount(sessionId);
+
+            if (count == 0) {
+                Toast.makeText(SessionDetailTutor.this,
+                        "No participants to send reminders to", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Send reminder notification to all participants
+            String reminderMessage = "Reminder: You have an upcoming session #" + sessionId +
+                    " scheduled for " + date + " at " + time +
+                    " at " + location + ". Duration: " + duration + " minutes.";
+
+            db.notifySessionParticipants(sessionId, "SESSION_REMINDER", reminderMessage);
+
             Toast.makeText(SessionDetailTutor.this,
-                    "Reminders sent to all participants (feature coming soon)",
-                    Toast.LENGTH_SHORT).show();
+                    "Reminders sent to " + count + " participant(s)", Toast.LENGTH_SHORT).show();
         });
 
         tvBack.setOnClickListener(v -> finish());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Refresh the activity when returning from Edit Session
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            // Reload the activity to show updated information
+            finish();
+            startActivity(getIntent());
+        }
     }
 }
